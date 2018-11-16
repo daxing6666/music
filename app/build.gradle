@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.music"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:palette-v7:28.0.0'
+
+    /**
+     * https://github.com/JakeWharton/butterknife
+     */
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+
+    //https://github.com/facebook/fresco 支持 GIF 动图，需要添加com.facebook.fresco:animated-gif:0.12.0
+    implementation 'com.facebook.fresco:fresco:1.9.0'
+    implementation 'com.facebook.fresco:animated-gif:0.12.0'
+
+    /**
+     *https://github.com/greenrobot/EventBus
+     */
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    /**
+     * 显示高清大图
+     * https://github.com/davemorrissey/subsampling-scale-image-view
+     */
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+
+    /**
+     * https://github.com/bumptech/glide
+     * https://muyangmin.github.io/glide-docs-cn/doc/getting-started.html
+     * 使用https://blog.csdn.net/shangmingchao/article/details/51125554/
+     */
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    /**
+     * Glide的网络请求部分可以使用当前最流行的网络请求框架Volley或OkHttp,
+     * 也可以通过Glide的ModelLoader接口自己写网络请求。
+     * Glide默认使用HttpUrlConnection进行网络请求
+     * 为了让APP保持一致的网络请求形式，可以让Glide使用我们指定的网络请求形式请求网络资源，
+     * 这里我们选OkHttp (具有支持HTTP/2、利用连接池技术减少请求延迟、缓存响应结果等等优点)
+     * 需要添加一个集成库：
+     */
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.8.0'
+
+    /**
+     * https://github.com/square/okhttp
+     */
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+
+    //==================================RxJava and RxAndroid and rxlifecycle =============================================
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
+
+    /**
+     * https://github.com/google/dagger
+     * dagger2
+     */
+    implementation 'com.google.dagger:dagger:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.19'
+    /**
+     * https://github.com/google/flexbox-layout弹性布局
+     */
+    implementation 'com.google.android:flexbox:1.1.0'
+}
