@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.music.di.component.ApplicationComponent;
+import com.music.di.component.DaggerApplicationComponent;
+import com.music.di.module.ApplicationModule;
 import com.music.model.UserInfo;
 
 import java.util.ArrayList;
@@ -19,12 +22,26 @@ public class AppDroid extends Application {
     private static AppDroid instance;
     private List<Activity> activities = new ArrayList<>();
     private UserInfo userInfo;
+    private ApplicationComponent applicationComponent;
+
+    /**
+     * 初始化ApplicationComponent
+     */
+    private void initApplicationComponent() {
+        applicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
+    }
+    public ApplicationComponent getApplicationComponent() {
+        return applicationComponent;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
         //全局Application
         instance = this;
+        initApplicationComponent();
         Fresco.initialize(this);
     }
 

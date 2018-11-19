@@ -1,23 +1,28 @@
 package com.music.frame.ui.base;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import android.os.IBinder;
 import android.view.KeyEvent;
 import android.widget.Toast;
 import com.music.AppDroid;
+import com.music.di.component.ActivityComponent;
+import com.music.di.component.DaggerActivityComponent;
+import com.music.di.module.ActivityModule;
 import com.music.frame.bean.InfoResult;
 import com.music.frame.bean.MsgBean;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends RxAppCompatActivity implements ServiceConnection, BaseContract.BaseView  {
+public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
+        RxAppCompatActivity implements ServiceConnection, BaseContract.BaseView  {
 
     private EventBus eventBus;
     private Toast toast = null;
@@ -46,7 +51,6 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         eventBus = EventBus.getDefault();
         eventBus.register(this);
         initActivityComponent();
-
         init();
         loadData();
     }
@@ -66,6 +70,11 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         ButterKnife.bind(this).unbind();
     }
 
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.bindToLifecycle();
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void handlerMeg(MsgBean msgBean) {
 
@@ -76,9 +85,42 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      */
     private void initActivityComponent() {
         mActivityComponent = DaggerActivityComponent.builder()
-                .applicationComponent(MusicApp.getInstance().getApplicationComponent())
+                .applicationComponent(AppDroid.getInstance().getApplicationComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showError(String message, boolean showRetryButton) {
+
+    }
+
+    @Override
+    public void showEmptyState() {
+
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName componentName) {
     }
 
     // -------------------- BaseActivity的辅助封装 --------------------- //

@@ -2,13 +2,13 @@ package com.music.frame.imageviewpager.glide;
 
 import android.app.Activity;
 import android.content.Context;
-import com.briup.frame.imageviewpager.glide.cache.DataCacheKey;
-import com.briup.frame.imageviewpager.glide.cache.SafeKeyGenerator;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.bumptech.glide.load.engine.cache.DiskCache;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.signature.EmptySignature;
+import com.music.frame.imageviewpager.glide.cache.DataCacheKey;
+import com.music.frame.imageviewpager.glide.cache.SafeKeyGenerator;
 import java.io.File;
 
 /**
