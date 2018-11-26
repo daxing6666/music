@@ -3,21 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
-  <com.briup.frame.imageviewpager.view.helper.FingerDragHelper
+  <com.music.frame.imageviewpager.view.helper.FingerDragHelper
       android:id="@+id/fingerDragHelper"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:gravity="center"
       android:orientation="vertical"
       >
-
-    <com.briup.frame.imageviewpager.view.helper.SubsamplingScaleImageViewDragClose
+    <com.music.frame.imageviewpager.view.helper.SubsamplingScaleImageViewDragClose
         android:id="@+id/photo_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-  </com.briup.frame.imageviewpager.view.helper.FingerDragHelper>
+  </com.music.frame.imageviewpager.view.helper.FingerDragHelper>
 
   <ProgressBar
       android:id="@+id/progress_view"
