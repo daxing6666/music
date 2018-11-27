@@ -7,7 +7,6 @@ import java.text.DecimalFormat;
 
 /**
  * [description about this class]
- *
  * @author jack
  */
 public class FileSizeUtil {

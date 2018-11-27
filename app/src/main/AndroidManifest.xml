@@ -65,8 +65,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.music.frame.imageviewpager.view.ImagePreviewActivity"/>
+
         <!--测试-->
         <activity android:name="com.music.test.DaggerTestActivity" />
+        <activity android:name="com.music.test.ImageviewpagerActivity" />
+
     </application>
 
 </manifest>
